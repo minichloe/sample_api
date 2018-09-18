@@ -1,9 +1,10 @@
 const express = require('express');
+const file = require('./FakeOrgJSON.json');
 const app = express();
 const PORT = 3000;
 
 app.get('/api/orgchart', (req, res, next) => {
-  res.json('Hi');
+  res.json(file);
 });
 
 app.use((req, res, next) => {
