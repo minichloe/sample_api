@@ -1,3 +1,5 @@
+const file = require('./FakeOrgJSON.json');
+
 // Configure to listen to our sample server
 const axios = require('axios').create({
   baseURL: `http://localhost:3000`,
@@ -11,3 +13,9 @@ const getOrgChart = async () => {
 };
 
 module.exports = getOrgChart;
+
+const sortData = data => {
+  console.log(data.length);
+};
+
+sortData(file);
