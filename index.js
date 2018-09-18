@@ -16,10 +16,13 @@ app.use((req, res, next) => {
   next(err);
 });
 
-const server = app.listen(PORT, async () => {
+const server = app.listen(PORT, () => {
   console.log(`
 Listening on port ${PORT}
 http://localhost:3000/
 `);
-  await getOrgChart();
+  getOrgChart();
 });
+
+// Set to automatically terminate server after completing single GET request
+setTimeout(() => server.close(), 50);
