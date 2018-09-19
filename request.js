@@ -10,7 +10,8 @@ const getOrgChart = async () => {
   try {
     console.log('Getting organization chart...\n');
     const { data } = await axios.get('/api/orgchart');
-    console.log(sortData(data));
+    const mapOfPersonnel = sortData(data);
+    const managementGraph = createGraph(mapOfPersonnel);
   } catch (err) {
     console.log(sortData(file));
   }
@@ -39,3 +40,6 @@ const sortData = (data, map = {}, manager = null) => {
   });
   return map;
 };
+
+// Function to create graph/chart of organization hierachy
+function createGraph(map) {}
