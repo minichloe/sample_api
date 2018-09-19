@@ -16,13 +16,14 @@ app.use((req, res, next) => {
   next(err);
 });
 
+// Open the server and run the single GET request
 const server = app.listen(PORT, () => {
   console.log(`
-Listening on port ${PORT}
-http://localhost:3000/
-`);
+  Listening on port ${PORT}
+  http://localhost:3000/
+  `);
   getOrgChart();
 });
 
-// Set to automatically terminate server after completing single GET request
+// Close the server after request is completed
 setTimeout(() => server.close(), 50);
