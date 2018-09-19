@@ -7,9 +7,13 @@ const axios = require('axios').create({
 
 // Function to invoke for get request and manipulating the data
 const getOrgChart = async () => {
-  console.log('Getting organization chart...\n');
-  const { data } = await axios.get('/api/orgchart');
-  console.log(data);
+  try {
+    console.log('Getting organization chart...\n');
+    const { data } = await axios.get('/api/orgchart');
+    console.log(sortData(data));
+  } catch (err) {
+    console.log(sortData(file));
+  }
 };
 
 module.exports = getOrgChart;
@@ -34,6 +38,3 @@ const sortData = (data, map = {}, manager = null) => {
   });
   return map;
 };
-
-const test = sortData(file);
-console.log(test);
