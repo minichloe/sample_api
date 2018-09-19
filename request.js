@@ -14,8 +14,22 @@ const getOrgChart = async () => {
 
 module.exports = getOrgChart;
 
-const sortData = data => {
-  console.log(data.length);
+const sortData = (data, map = {}) => {
+  data.forEach(x => {
+    const keys = Object.keys(x);
+    map[x['name']] = {};
+    const tempMap = map[x['name']];
+    keys.forEach(key => {
+      if (key === 'manager') {
+        tempMap[key] = [];
+        if (x[key] !== null) sortData(x[key], map);
+      } else if (key !== 'name') {
+        tempMap[key] = x[key];
+      }
+    });
+  });
+  return map;
 };
 
-sortData(file);
+const test = sortData(file);
+console.log(test);
