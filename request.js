@@ -18,6 +18,7 @@ const getOrgChart = async () => {
 
 module.exports = getOrgChart;
 
+// Function to sort data into a map using names as keys
 const sortData = (data, map = {}, manager = null) => {
   data.forEach(x => {
     const keys = Object.keys(x);
